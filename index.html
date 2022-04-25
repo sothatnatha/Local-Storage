@@ -90,18 +90,31 @@
         const btnInsert = document.getElementById('btn-insert');
         const lsOutput = document.querySelector('.ls-output');
 
-        btnInsert.onclick = function () {
+        btnInsert.addEventListener('click', e => {
             const key = inpKey.value;
             const val = inpValKey.value;
 
 
-            if(key && val) {
+            if (key && val) {
                 localStorage.setItem(key, val);
                 location.reload();
             }
+        });
 
-           
-        };
+        // or
+        // btnInsert.onclick = function () {
+        //     const key = inpKey.value;
+        //     const val = inpValKey.value;
+
+
+        //     if (key && val) {
+        //         localStorage.setItem(key, val);
+        //         location.reload();
+        //     }
+
+
+        // };
+
 
 
         for(let i = 0; i <localStorage.length; i++) {
