@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local-Storage | Implementing</title>
+    <link rel="shortcut icon" href="assets/folder.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Freehand&family=Hanuman:wght@100;300;400&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f3f7fb;
+        }
+      
+        .container h2 {
+            text-align: center;
+            padding: 10px 0;
+            color: rgb(223, 185, 16);
+        }
+        .frm-box {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        fieldset {
+            padding: 10px 49px;
+        }
+        fieldset input {
+            padding: 10px 5px;
+            border: 1px solid #ddd;
+           
+        }
+       #btn-insert {
+           cursor: pointer;
+           padding: 10px 5px;
+           border: 1px solid #ddd;
+
+       }
+       #btn-insert:hover {
+           background-color: #f5f5f5;
+           border: 1px solid #ddd;
+       }
+       form a {
+           display: flex;
+           justify-content: center;
+           margin-top: 10px;
+           font-size: 12px;
+           text-decoration: none;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Javascript - Local - Storage</h2> <br>
+        <div class="frm-box">
+            <form action="" autocomplete="off">
+                <fieldset>
+                    <legend>Insert Field</legend>
+                    <input type="text" id="input-key" placeholder="Enter key...">
+                    <input type="text" id="input-key-val" placeholder="Enter key value...">
+                    <button type="button" id="btn-insert">Insert Data</button>
+
+                </fieldset> <br><br>
+                <fieldset>
+                    <legend> Data - Local - Storage </legend>
+                    <div class="ls-output"></div>
+                    
+                </fieldset>
+            
+            
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">More about localStorage + </a>
+            
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- scripts -->
+    <script type="text/javascript">
+        const inpKey = document.getElementById('input-key');
+        const inpValKey = document.getElementById('input-key-val');
+        const btnInsert = document.getElementById('btn-insert');
+        const lsOutput = document.querySelector('.ls-output');
+
+        btnInsert.onclick = function () {
+            const key = inpKey.value;
+            const val = inpValKey.value;
+
+
+            if(key && val) {
+                localStorage.setItem(key, val);
+                location.reload();
+            }
+
+           
+        };
+
+
+        for(let i = 0; i <localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const val = localStorage.getItem(key);
+
+            lsOutput.innerHTML += `${key}: ${val} <br/>`;
+        }
+    </script>
+</body>
+</html>
